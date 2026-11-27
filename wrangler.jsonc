@@ -1,0 +1,8 @@
+{
+  "name": "vike-wear",
+  "compatibility_date": "2026-11-27",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}
