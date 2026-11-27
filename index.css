@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Almarai:wght@300;400;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  overscroll-behavior: none;
+}
+
+:root {
+  --color-bg: 10 10 11;           /* near-black night base */
+  --color-primary: 255 255 255;   /* pure white */
+  --color-secondary: 244 244 244; /* white */
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+}
+
+html {
+  background-color: #0a0a0b;
+  color-scheme: dark;
+  direction: rtl;
+}
+
+body {
+  font-family: 'Almarai', system-ui, -apple-system, sans-serif;
+  color: #f2f2f2;
+  background-color: #0a0a0b;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::-webkit-scrollbar { display: none; }
+html { scrollbar-width: none; }
+
+.font-display {
+  font-family: 'Cairo', system-ui, sans-serif;
+  letter-spacing: -0.025em;
+  font-feature-settings: 'ss01';
+}
+
+/* ── motion ─────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.reveal {
+  animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal-soft {
+  animation: fadeIn 1.1s ease-out both;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-soft, .marquee-track { animation: none !important; }
+}
+
+/* ── texture ────────────────────────────────────────────── */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+  mix-blend-mode: overlay;
+}
+
+.edge-fade-b {
+  mask-image: linear-gradient(to top, black 55%, transparent);
+  -webkit-mask-image: linear-gradient(to top, black 55%, transparent);
+}
+
+/* number inputs: hide spinners for the qty steppers */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

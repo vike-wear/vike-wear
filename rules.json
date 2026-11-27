@@ -1,0 +1,59 @@
+{
+  "collections": {
+    "orders": {
+      "create": { "by": "anyone", "require": { "status": "new" } },
+      "update": [{ "by": "owner", "fields": ["status"] }],
+      "delete": [{ "by": "owner" }],
+      "history": true
+    },
+    "products": {
+      "create": { "by": "owner" },
+      "update": [
+        {
+          "by": "owner",
+          "fields": [
+            "name",
+            "category",
+            "price",
+            "oldPrice",
+            "image",
+            "credit",
+            "badge",
+            "colors",
+            "sizes",
+            "desc",
+            "details",
+            "featured",
+            "active",
+            "stock"
+          ]
+        }
+      ],
+      "delete": [{ "by": "owner" }]
+    },
+    "settings": {
+      "create": { "by": "owner" },
+      "update": [
+        {
+          "by": "owner",
+          "fields": [
+            "whatsapp",
+            "instagram",
+            "currency",
+            "shipping",
+            "freeShippingOver",
+            "note",
+            "brandName",
+            "logo",
+            "heroImage",
+            "storyImage",
+            "storyTitle",
+            "storyIntro",
+            "storyBlocks"
+          ]
+        }
+      ],
+      "delete": [{ "by": "owner" }]
+    }
+  }
+}
